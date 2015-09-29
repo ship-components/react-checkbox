@@ -2,15 +2,17 @@
  * CheckBox
  *
  * @author       Isaac Suttell <isaac@isaacsuttell.com>
- * @file         Reusable checkbox component
+ * @file         Reusable checkbox component. Requires webpack with style/css-loader
+ * @flow
  ******************************************************************************/
 
 // Modules
-import React from 'react/addons';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import HighlightClick from 'react-highlight-click';
 
-// Lets animate it
-const ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
+import classes from './check-box.css';
 
 export default class CheckBox extends React.Component {
 
@@ -62,7 +64,7 @@ export default class CheckBox extends React.Component {
     let customEvent = new window.MouseEvent('change');
 
     // Grab the dom element so the event.target is correct
-    let el = React.findDOMNode(this.refs.input);
+    let el = ReactDOM.findDOMNode(this.refs.input);
 
     // Calls parent change function with the custom event and the right target
     let handler = function(ev) {
@@ -86,35 +88,40 @@ export default class CheckBox extends React.Component {
    * @return {React}
    */
   render() {
-    let classes = 'check-box';
+    let classNames = 'ship-check-box ' + classes.container;
 
     let selected = this.props.readOnly === true ? this.props.selected : this.state.selected;
 
     if (selected) {
-      classes += ' check-box--checked';
+      classNames += ' ' + classes.checked;
     }
 
     if (this.props.className) {
-      classes += ' ' + this.props.className;
+      classNames += ' ' + this.props.className;
     }
 
     return (
       <HighlightClick
-        className={classes}
+        className={classNames}
         onClick={this.handleClick.bind(this)} >
         <div
-          className='check-box--input' >
-          {this.props.outlineIcon}
+          className={classes.input} >
+          <span className={classes['icon-background'] + ' ' + this.props.outlineIconClass} />
           <ReactCSSTransitionGroup
-            transitionName='check-box--icon' >
-            {selected === true ? this.props.selectedIcon: null}
+            transitionName={classes}
+            transitionEnterTimeout={500}
+            transitionLeaveTimeout={500} >
+              {selected === true ?
+                <span className={classes.icon + ' ' + this.props.selectedIconClass} /> :
+                null
+              }
           </ReactCSSTransitionGroup>
         </div>
-        <label className='check-box--label'>
+        <label className={classes.label}>
           {this.props.label || this.props.children}
         </label>
         <input
-          className='check-box--controller'
+          className={classes.controller}
           readOnly={this.props.readOnly}
           type={this.props.type}
           checked={this.state.selected}
@@ -152,6 +159,6 @@ CheckBox.defaultProps = {
   type: 'checkbox',
   defaultValue: '',
   readOnly: false,
-  outlineIcon: <span className='check-box--icon-background icon-check_box_outline_blank' />,
-  selectedIcon: <span className='check-box--icon icon-check_box' />
+  outlineIconClass: 'icon-check_box_outline_blank',
+  selectedIconClass: 'icon-check_box'
 }

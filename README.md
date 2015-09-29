@@ -28,6 +28,44 @@ export default class Form extends Component {
 }
 ```
 
+### Webpack Configuration
+This module is designed to be used with webpack but requires a few loaders.
+
+```shell
+npm install webpack babel-loader css-loader style-loader postcss-loader extract-text-webpack-plugin --save-dev
+```
+
+Below are is a sample of how to setup the loaders:
+
+```js
+/**
+ * Relevant Webpack Configuration
+ */
+{
+  [...]
+  module: {
+    loaders: [
+      // Setup support for ES6
+      {
+        test: /\.(jsx?|es6)$/,
+        exclude: /(node_modules|bower_components)/,
+        loader: 'babel'
+      },
+      // Setup support for CSS Modules
+      {
+        test: /\.css$/,
+        loader: ExtractTextPlugin.extract('style-loader', 'css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!postcss-loader')
+      }
+    ]
+  },
+  plugins: [
+    // Extract the css and put it in one file. Path is relative to output path
+    new ExtractTextPlugin('../css/[name]-modules.css', { allChunks: true })
+  ],
+  [...]
+}
+```
+
 ## Tests
 
 *There's currently a bug in Jest, so the units tests and they will not run.*
