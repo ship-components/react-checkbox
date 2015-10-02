@@ -7,20 +7,32 @@
 
 ## Usage
 
-### With Babel (Recommended)
+### ES6/JSX (Recommended)
 The component is written using ES6/JSX therefore Babel is required to directly use it. The below example is based on using [webpack](http://webpack.github.io/) and [babel-loader](https://github.com/babel/babel-loader).
 ```js
-import { Component } from 'react';
+import React from 'react';
 import Checkbox from 'react-ship-checkbox';
 
-export default class Form extends Component {
+export default class Form extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      selected: props.initialState
+    };
+  }
+
+  handleChange(event) {
+    this.setState({
+      selected: event.target.value
+    });
+  }
+
   render() {
     return (
-        <div
-          className='form-group'>
+        <div className='form-group'>
           <CheckBox
             label='Enable buggy code'
-            selected={false}
+            selected={this.state.selected}
             onChange={this.handleChange.bind(this)} />
         </div>
     );

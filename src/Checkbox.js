@@ -3,7 +3,6 @@
  *
  * @author       Isaac Suttell <isaac@isaacsuttell.com>
  * @file         Reusable checkbox component. Requires webpack with style/css-loader
- * @flow
  ******************************************************************************/
 
 // Modules
@@ -140,14 +139,14 @@ export default class CheckBox extends React.Component {
  * @static
  */
 CheckBox.propTypes = {
-  defaultValue: React.PropTypes.string,
+  defaultValue: React.PropTypes.bool,
   readOnly: React.PropTypes.bool,
   selected: React.PropTypes.bool,
   value: React.PropTypes.string,
   label: React.PropTypes.string,
   onChange: React.PropTypes.func,
-  outlineIcon: React.PropTypes.element.isRequired,
-  selectedIcon: React.PropTypes.element.isRequired
+  outlineIcon: React.PropTypes.element,
+  selectedIcon: React.PropTypes.element
 }
 
 /**
@@ -157,7 +156,7 @@ CheckBox.propTypes = {
  */
 CheckBox.defaultProps = {
   type: 'checkbox',
-  defaultValue: '',
+  defaultValue: false,
   readOnly: false,
   outlineIconClass: 'icon-check_box_outline_blank',
   selectedIconClass: 'icon-check_box'

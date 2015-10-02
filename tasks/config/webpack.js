@@ -36,8 +36,10 @@ module.exports = function(grunt) {
       },
 
       externals: {
-        'react/addons': true,
-        'react-highlight-click': true
+        'react': true,
+        'react-dom': true,
+        'react-highlight-click': true,
+        'react-addons-css-transition-group': true
       },
 
       stats: {
