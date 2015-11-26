@@ -1,5 +1,5 @@
 jest.dontMock('../Checkbox');
-jest.dontMock('react-highlight-click');
+jest.setMock('react-highlight-click', 'div');
 jest.mock('../check-box.css');
 
 import React from 'react';
