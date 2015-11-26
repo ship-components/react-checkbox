@@ -27,7 +27,7 @@
 }
 
 .checked .input {
-  color: #38b889;
+  color: $accent-color;
 }
 
 .controller {
