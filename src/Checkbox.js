@@ -59,29 +59,38 @@ export default class CheckBox extends React.Component {
    * Create and send a change event to the parent
    */
   triggerChangeEvent() {
-    // Generate a change event to let the parent know
-    let customEvent = new window.MouseEvent('change');
-
     // Grab the dom element so the event.target is correct
     let el = ReactDOM.findDOMNode(this.refs.input);
 
-    // Calls parent change function with the custom event and the right target
-    let handler = function(ev) {
-      // Clean up
-      el.removeEventListener('change', handler);
+    // Generate a change event to let the parent know
+    try {
+      let customEvent = new window.MouseEvent('change');
+
+      // Calls parent change function with the custom event and the right target
+      let handler = function(ev) {
+        // Clean up
+        el.removeEventListener('change', handler);
+        if (typeof this.props.onChange === 'function'){
+          // Call
+          this.props.onChange.call(ev, ev);
+        }
+      }.bind(this);
+
+      // Attach
+      el.addEventListener('change', handler);
+
+      // Trigger
+      el.dispatchEvent(customEvent);
+    } catch(err) {
+      // Fallback to just passing an object with the element in it
       if (typeof this.props.onChange === 'function'){
         // Call
-        this.props.onChange.call(ev, ev);
+        this.props.onChange({
+          target: el
+        });
       }
-    }.bind(this);
-
-    // Attach
-    el.addEventListener('change', handler);
-
-    // Trigger
-    el.dispatchEvent(customEvent);
+    }
   }
-
   /**
    * Render Method
    * @return {React}
