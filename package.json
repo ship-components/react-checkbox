@@ -4,6 +4,7 @@
   "description": "React checkbox component",
   "main": "src/Checkbox.js",
   "scripts": {
+    "start": "grunt server",
     "test": "jest src/ --coverage",
     "build": "grunt build"
   },
