@@ -9,103 +9,110 @@
  *    https://github.com/webpack/grunt-webpack
  */
 
-module.exports = function(grunt) {
-  var PackageBanner = require('package-banner');
-  var webpack = require('webpack');
-  var path = require('path');
+var assign = require('object-assign');
+var webpack = require('webpack');
+var path = require('path');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-  var pkg = grunt.file.readJSON('package.json');
-  var banner = new PackageBanner({
-    pkg: pkg,
-    wrap: false
-  }).build();
+module.exports = function(grunt) {
+
+  /** **************************************************************************
+   * Build
+   */
+  var buildOptions = assign({}, require('./webpack.config'), {
+    // Clear default plugins so we can override through grunt
+    plugins: []
+  });
 
   grunt.config.set('webpack', {
 
-    options: {
-      // Where to start
-      entry: {
-        Checkbox: './src/Checkbox.js'
-      },
+    options: buildOptions,
 
-      // Where to output
-      output: {
-        path: './es5',
-        filename: '[name].js',
-        libraryTarget: 'commonjs2'
-      },
-
-      externals: {
-        'react': true,
-        'react-dom': true,
-        'react-highlight-click': true,
-        'react-addons-css-transition-group': true
-      },
-
-      stats: {
-        colors: true,
-        modules: false,
-        reasons: true
-      },
-
-      module: {
-        preLoaders: [{
-          test: /\.jsx?|\.es6$/,
-          exclude: /(node_modules|bower_components)/,
-          loader: 'eslint-loader'
-        }],
-        loaders: [
-          // Setup jsx loader
-          {
-            test: /\.jsx?|\.es6$/,
-            exclude: /(node_modules|bower_components)/,
-            loader: 'babel'
-          }
-        ]
-      },
-
-      jshint: {
-        failOnHint: false,
-        esnext: true
-      },
-
-      resolve: {
-        extensions: ['', '.js', '.jsx', '.es6'],
-        fallback: path.resolve(__dirname, '../../node_modules')
-      },
-
-      resolveLoader: {
-        fallback: path.resolve(__dirname, '../../node_modules')
-      },
-
+    dev: {
       plugins: [
-        new webpack.optimize.OccurenceOrderPlugin(true),
-        // new webpack.EnvironmentPlugin(['NODE_ENV']),
-        new webpack.BannerPlugin(banner)
+        new ExtractTextPlugin('[name].css', {
+          allChunks: true
+        }),
+        new webpack.optimize.DedupePlugin(),
+        new webpack.optimize.OccurenceOrderPlugin(true)
       ]
     },
 
-    dev: {},
-
     dist : {
-
       output: {
         filename: '[name].min.js'
       },
 
       plugins: [
+        new ExtractTextPlugin('[name].min.css', {
+          allChunks: true
+        }),
         new webpack.optimize.OccurenceOrderPlugin(true),
-        // new webpack.EnvironmentPlugin(['NODE_ENV']),
+        new webpack.optimize.DedupePlugin(),
         new webpack.optimize.UglifyJsPlugin()
-        // new webpack.BannerPlugin(banner)
       ]
-    },
-
-    watch: {
-      watch: true,
-      keepalive: true,
-      failOnError: false,
-      progress: false
     }
   });
+
+  /** **************************************************************************
+   * Development Server
+   */
+  var serverOptions = assign({}, require('./webpack.config'), {
+    plugins: [],
+    entry : {
+      bundle: path.resolve(__dirname, '../../examples/index.jsx')
+    },
+    output: {
+      filename: 'bundle.js'
+    },
+    devtool: 'eval',
+    eslint: {
+      failOnWarning: false
+    },
+    externals: {
+      'react': 'React',
+      'react-dom': 'ReactDOM',
+      'react-addons-css-transition-group': 'React.addons.CSSTransitionGroup'
+    }
+  });
+
+  // Remove Extract Plugin. Gotta clone to prevent changing above config
+  serverOptions.module = assign({}, serverOptions.module);
+  serverOptions.module.loaders = serverOptions.module.loaders.slice(0);
+  serverOptions.module.loaders.splice(serverOptions.module.loaders.length - 1);
+  serverOptions.module.loaders.push({
+    test: /\.css$/,
+    loaders: [
+      'style-loader',
+      'css-loader?modules&importLoaders=1&localIdentName=[name]--[local]-[hash:base64:5]!postcss-loader'
+    ]
+  });
+
+  // Include any npm modules we need to use babel on here
+  serverOptions.module.loaders.push({
+    test: /\.(jsx?|es6)$/,
+    include: [
+      path.join(__dirname, '../../node_modules/react-highlight-click')
+    ],
+    loader: 'babel'
+  });
+
+  grunt.config.set('webpack-dev-server', {
+    options: {
+      webpack: serverOptions,
+      host: 'localhost',
+      contentBase: 'examples/',
+      publicPath: '/assets/',
+      filename: 'bundle.js',
+      keepalive: true,
+      inline: true,
+      hot: true,
+      quiet: false,
+      noInfo: false
+    },
+
+    dev: {}
+  });
+
+  grunt.loadNpmTasks('grunt-webpack');
 };
