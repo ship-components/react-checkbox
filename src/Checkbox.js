@@ -39,7 +39,9 @@ export default class CheckBox extends React.Component {
   }
 
   shouldComponentUpdate(nextProps, nextState) {
-    return this.props.selected !== nextProps.selected || this.state.selected !== nextState.selected;
+    return this.props.selected !== nextProps.selected ||
+           this.state.selected !== nextState.selected ||
+           this.props.label !== nextProps.label;
   }
 
   /**
@@ -113,8 +115,9 @@ export default class CheckBox extends React.Component {
         className={classNames}
         onClick={this.handleClick.bind(this)} >
         <div
-          className={classes.input} >
-          <span className={classes['icon-background'] + ' ' + this.props.outlineIconClass} />
+          className={classes.input}
+        >
+          <span className={classes['icon-background'] + ' ' + this.props.outlineIconClass + ' ' + classes.icon} />
           <ReactCSSTransitionGroup
             transitionName={classes}
             transitionEnterTimeout={500}
