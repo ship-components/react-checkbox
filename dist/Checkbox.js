@@ -1,10 +1,10 @@
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
-		module.exports = factory(require("React"), require("react-addons-css-transition-group"), require("react-dom"), require("react-highlight-click"));
+		module.exports = factory(require("React"), require("react-addons-css-transition-group"), require("react-dom"), require("ship-components-highlight-click"));
 	else if(typeof define === 'function' && define.amd)
-		define(["React", "react-addons-css-transition-group", "react-dom", "react-highlight-click"], factory);
+		define(["React", "react-addons-css-transition-group", "react-dom", "ship-components-highlight-click"], factory);
 	else {
-		var a = typeof exports === 'object' ? factory(require("React"), require("react-addons-css-transition-group"), require("react-dom"), require("react-highlight-click")) : factory(root["React"], root["react-addons-css-transition-group"], root["react-dom"], root["react-highlight-click"]);
+		var a = typeof exports === 'object' ? factory(require("React"), require("react-addons-css-transition-group"), require("react-dom"), require("ship-components-highlight-click")) : factory(root["React"], root["react-addons-css-transition-group"], root["react-dom"], root["ship-components-highlight-click"]);
 		for(var i in a) (typeof exports === 'object' ? exports : root)[i] = a[i];
 	}
 })(this, function(__WEBPACK_EXTERNAL_MODULE_2__, __WEBPACK_EXTERNAL_MODULE_3__, __WEBPACK_EXTERNAL_MODULE_4__, __WEBPACK_EXTERNAL_MODULE_5__) {
@@ -74,9 +74,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _reactAddonsCssTransitionGroup2 = _interopRequireDefault(_reactAddonsCssTransitionGroup);
 	
-	var _reactHighlightClick = __webpack_require__(5);
+	var _shipComponentsHighlightClick = __webpack_require__(5);
 	
-	var _reactHighlightClick2 = _interopRequireDefault(_reactHighlightClick);
+	var _shipComponentsHighlightClick2 = _interopRequireDefault(_shipComponentsHighlightClick);
 	
 	var _checkBox = __webpack_require__(1);
 	
@@ -133,7 +133,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }, {
 	    key: 'shouldComponentUpdate',
 	    value: function shouldComponentUpdate(nextProps, nextState) {
-	      return this.props.selected !== nextProps.selected || this.state.selected !== nextState.selected;
+	      return this.props.selected !== nextProps.selected || this.state.selected !== nextState.selected || this.props.label !== nextProps.label;
 	    }
 	
 	    /**
@@ -218,15 +218,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	      }
 	
 	      return _react2.default.createElement(
-	        _reactHighlightClick2.default,
+	        _shipComponentsHighlightClick2.default,
 	        {
 	          className: classNames,
 	          onClick: this.handleClick.bind(this) },
 	        _react2.default.createElement(
 	          'div',
 	          {
-	            className: _checkBox2.default.input },
-	          _react2.default.createElement('span', { className: _checkBox2.default['icon-background'] + ' ' + this.props.outlineIconClass }),
+	            className: _checkBox2.default.input
+	          },
+	          _react2.default.createElement('span', { className: _checkBox2.default['icon-background'] + ' ' + this.props.outlineIconClass + ' ' + _checkBox2.default.icon }),
 	          _react2.default.createElement(
 	            _reactAddonsCssTransitionGroup2.default,
 	            {

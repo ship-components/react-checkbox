@@ -11,13 +11,14 @@
 The component is written using ES6/JSX therefore Babel is required to directly use it. The below example is based on using [webpack](http://webpack.github.io/) and [babel-loader](https://github.com/babel/babel-loader).
 ```js
 import React from 'react';
-import Checkbox from 'react-ship-checkbox';
+import Checkbox, {RadioBox, RadioBoxGroup} from 'react-ship-checkbox';
 
 export default class Form extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      selected: props.initialState
+      selected: props.initialState,
+      type: props.initialType
     };
   }
 
@@ -27,13 +28,36 @@ export default class Form extends React.Component {
     });
   }
 
+  handleChangeType(event) {
+    this.setState({
+      type: event.target.value
+    });
+  }
+
   render() {
     return (
         <div className='form-group'>
+          {/* Checkbox Example */}
           <CheckBox
             label='Enable buggy code'
             selected={this.state.selected}
-            onChange={this.handleChange.bind(this)} />
+            onChange={this.handleChange.bind(this)}
+          />
+
+          {/* Radiobox Example */}
+          <RadioBoxGroup
+           defaultValue={this.state.type}
+           onChange={this.handleChangeType.bind(this)}
+          >
+            <RadioBox
+              value="1"
+              label="Card"
+            />
+            <RadioBox
+              value="2"
+              label="Boat"
+            />
+          </RadioBoxGroup>
         </div>
     );
   }
