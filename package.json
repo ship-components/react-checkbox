@@ -1,8 +1,8 @@
 {
-  "name": "react-ship-checkbox",
-  "version": "0.1.0",
+  "name": "ship-components-checkbox",
+  "version": "0.1.1",
   "description": "React checkbox component",
-  "main": "src/Checkbox.js",
+  "main": "src/index.js",
   "scripts": {
     "start": "grunt server",
     "test": "jest src/ --coverage",
@@ -10,22 +10,23 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ship-components/react-ship-checkbox.git"
+    "url": "git+https://github.com/ship-components/ship-components-checkbox.git"
   },
   "keywords": [
-    "react"
+    "react",
+    "checkbox"
   ],
   "author": "Isaac Suttell",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ship-components/react-ship-checkbox/issues"
+    "url": "https://github.com/ship-components/ship-components-checkbox/issues"
   },
-  "homepage": "https://github.com/ship-components/react-ship-checkbox#readme",
+  "homepage": "https://github.com/ship-components/ship-components-checkbox#readme",
   "devDependencies": {
     "autoprefixer": "^6.1.1",
     "babel-core": "^6.2.1",
     "babel-eslint": "^4.1.6",
-    "babel-jest": "git+https://github.com/isuttell/babel-jest.git#master",
+    "babel-jest": "^14.1.0",
     "babel-loader": "^6.2.0",
     "babel-preset-es2015": "^6.1.18",
     "babel-preset-react": "^6.1.18",
@@ -55,7 +56,7 @@
     "react-addons-css-transition-group": "^0.14.3",
     "react-addons-test-utils": "^0.14.3",
     "react-dom": "^0.14.3",
-    "react-highlight-click": "git+https://github.com/ship-components/react-highlight-click.git#master",
+    "ship-components-highlight-click": "^0.1.4",
     "style-loader": "^0.13.0",
     "webpack": "^1.12.1",
     "webpack-dev-server": "^1.10.1"
@@ -84,7 +85,7 @@
   "babelJest": {
     "include": [
       "src/**/*.@(js|jsx|es6)",
-      "node_modules/react-highlight-click/src/**/*.@(js|jsx|es6)"
+      "node_modules/ship-components-highlight-click/src/**/*.@(js|jsx|es6)"
     ]
   }
 }

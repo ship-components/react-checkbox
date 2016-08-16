@@ -11,18 +11,19 @@
   cursor: pointer;
 }
 
-.check-box--icon {
+span.check-box--icon {
   display: block;
+  width: 32px;
+  height: 32px;
+  line-height: 32px;
+  font-size: 20px;
 }
 
 .check-box--input,
 .check-box--icon-background {
   width: 32px;
-  height: 32px;
-  line-height: 32px;
   text-align: center;
   position: relative;
-  font-size: 20px;
 }
 
 .check-box--label {

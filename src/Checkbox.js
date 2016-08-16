@@ -9,7 +9,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
-import HighlightClick from 'react-highlight-click';
+import HighlightClick from 'ship-components-highlight-click';
 
 import classes from './check-box.css';
 
