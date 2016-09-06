@@ -7,7 +7,7 @@
 
 // Modules
 import React from 'react';
-import CheckBox from 'react-ship-checkbox';
+import CheckBox from './Checkbox';
 
 export default class RadioBox extends React.Component {
 

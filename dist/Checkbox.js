@@ -56,11 +56,21 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 	
-	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
 	
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
+	
+	var _createClass = function () {
+	  function defineProperties(target, props) {
+	    for (var i = 0; i < props.length; i++) {
+	      var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
+	    }
+	  }return function (Constructor, protoProps, staticProps) {
+	    if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
+	  };
+	}();
 	
 	var _react = __webpack_require__(2);
 	
@@ -82,33 +92,47 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _checkBox2 = _interopRequireDefault(_checkBox);
 	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	function _interopRequireDefault(obj) {
+	  return obj && obj.__esModule ? obj : { default: obj };
+	}
 	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	function _classCallCheck(instance, Constructor) {
+	  if (!(instance instanceof Constructor)) {
+	    throw new TypeError("Cannot call a class as a function");
+	  }
+	}
 	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	function _possibleConstructorReturn(self, call) {
+	  if (!self) {
+	    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+	  }return call && ((typeof call === "undefined" ? "undefined" : _typeof(call)) === "object" || typeof call === "function") ? call : self;
+	}
 	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /** ****************************************************************************
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * CheckBox
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @author       Isaac Suttell <isaac@isaacsuttell.com>
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @file         Reusable checkbox component. Requires webpack with style/css-loader
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                ******************************************************************************/
+	function _inherits(subClass, superClass) {
+	  if (typeof superClass !== "function" && superClass !== null) {
+	    throw new TypeError("Super expression must either be null or a function, not " + (typeof superClass === "undefined" ? "undefined" : _typeof(superClass)));
+	  }subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
+	} /** ****************************************************************************
+	   * CheckBox
+	   *
+	   * @author       Isaac Suttell <isaac@isaacsuttell.com>
+	   * @file         Reusable checkbox component. Requires webpack with style/css-loader
+	   ******************************************************************************/
 	
 	// Modules
 	
-	var CheckBox = (function (_React$Component) {
+	
+	var CheckBox = function (_React$Component) {
 	  _inherits(CheckBox, _React$Component);
 	
 	  /**
 	   * Material Design inspired Cseckbox Component. Can either be controlled or uncontrolled.
 	   * @param  {Object} props
 	   */
-	
 	  function CheckBox(props) {
 	    _classCallCheck(this, CheckBox);
 	
-	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(CheckBox).call(this, props));
+	    var _this = _possibleConstructorReturn(this, (CheckBox.__proto__ || Object.getPrototypeOf(CheckBox)).call(this, props));
 	
 	    _this.state = {
 	      selected: props.readOnly === true ? props.selected : props.defaultValue
@@ -172,14 +196,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	          var customEvent = new window.MouseEvent('change');
 	
 	          // Calls parent change function with the custom event and the right target
-	          var handler = (function (ev) {
+	          var handler = function (ev) {
 	            // Clean up
 	            el.removeEventListener('change', handler);
 	            if (typeof this.props.onChange === 'function') {
 	              // Call
 	              this.props.onChange.call(ev, ev);
 	            }
-	          }).bind(_this3);
+	          }.bind(_this3);
 	
 	          // Attach
 	          el.addEventListener('change', handler);
@@ -217,46 +241,27 @@ return /******/ (function(modules) { // webpackBootstrap
 	        classNames += ' ' + this.props.className;
 	      }
 	
-	      return _react2.default.createElement(
-	        _shipComponentsHighlightClick2.default,
-	        {
-	          className: classNames,
-	          onClick: this.handleClick.bind(this) },
-	        _react2.default.createElement(
-	          'div',
-	          {
-	            className: _checkBox2.default.input
-	          },
-	          _react2.default.createElement('span', { className: _checkBox2.default['icon-background'] + ' ' + this.props.outlineIconClass + ' ' + _checkBox2.default.icon }),
-	          _react2.default.createElement(
-	            _reactAddonsCssTransitionGroup2.default,
-	            {
-	              transitionName: _checkBox2.default,
-	              transitionEnterTimeout: 500,
-	              transitionLeaveTimeout: 500 },
-	            selected === true ? _react2.default.createElement('span', { className: _checkBox2.default.icon + ' ' + this.props.selectedIconClass }) : null
-	          )
-	        ),
-	        _react2.default.createElement(
-	          'label',
-	          { className: _checkBox2.default.label },
-	          this.props.label || this.props.children
-	        ),
-	        _react2.default.createElement('input', {
-	          className: _checkBox2.default.controller,
-	          readOnly: this.props.readOnly,
-	          type: this.props.type,
-	          checked: this.state.selected,
-	          defaultValue: this.props.value,
-	          value: this.props.value || this.state.selected,
-	          ref: 'input'
-	        })
-	      );
+	      return _react2.default.createElement(_shipComponentsHighlightClick2.default, {
+	        className: classNames,
+	        onClick: this.handleClick.bind(this) }, _react2.default.createElement('div', {
+	        className: _checkBox2.default.input
+	      }, _react2.default.createElement('span', { className: _checkBox2.default['icon-background'] + ' ' + this.props.outlineIconClass + ' ' + _checkBox2.default.icon }), _react2.default.createElement(_reactAddonsCssTransitionGroup2.default, {
+	        transitionName: _checkBox2.default,
+	        transitionEnterTimeout: 500,
+	        transitionLeaveTimeout: 500 }, selected === true ? _react2.default.createElement('span', { className: _checkBox2.default.icon + ' ' + this.props.selectedIconClass }) : null)), _react2.default.createElement('label', { className: _checkBox2.default.label }, this.props.label || this.props.children), _react2.default.createElement('input', {
+	        className: _checkBox2.default.controller,
+	        readOnly: this.props.readOnly,
+	        type: this.props.type,
+	        checked: this.state.selected,
+	        defaultValue: this.props.value,
+	        value: this.props.value || this.state.selected,
+	        ref: 'input'
+	      }));
 	    }
 	  }]);
 	
 	  return CheckBox;
-	})(_react2.default.Component);
+	}(_react2.default.Component);
 	
 	/**
 	 * Type Checks
