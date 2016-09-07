@@ -1,9 +1,10 @@
-# react-ship-checkbox
+# ship-components-checkbox
 [React](http://facebook.github.io/react/) checkbox component. Exports a commonjs module that can be used with [webpack](http://webpack.github.io/) or [browserify](http://browserify.org/). Source is in ES6 and is compiled down to ES5 using [Babel](https://babeljs.io/).
 
-[![Build Status](http://img.shields.io/travis/ship-components/react-ship-checkbox/master.svg?style=flat)](https://travis-ci.org/ship-components/react-ship-checkbox)
-[![Code Quality](https://img.shields.io/codeclimate/github/ship-components/react-ship-checkbox.svg?style=flat)](https://codeclimate.com/github/ship-components/react-ship-checkbox)
-[![Code Coverage](https://img.shields.io/codeclimate/coverage/github/ship-components/react-ship-checkbox.svg?style=flat)](https://codeclimate.com/github/ship-components/react-ship-checkbox)
+[![npm](https://img.shields.io/npm/v/ship-components-checkbox.svg?maxAge=2592000)](https://www.npmjs.com/package/ship-components-checkbox)
+[![Build Status](http://img.shields.io/travis/ship-components/ship-components-checkbox/master.svg?style=flat)](https://travis-ci.org/ship-components/ship-components-checkbox)
+[![devDependencies](https://img.shields.io/david/dev/ship-components/ship-components-checkbox.svg?style=flat)](https://david-dm.org/ship-components/ship-components-checkbox?type=dev)
+
 
 ## Usage
 
@@ -11,7 +12,7 @@
 The component is written using ES6/JSX therefore Babel is required to directly use it. The below example is based on using [webpack](http://webpack.github.io/) and [babel-loader](https://github.com/babel/babel-loader).
 ```js
 import React from 'react';
-import Checkbox, {RadioBox, RadioBoxGroup} from 'react-ship-checkbox';
+import Checkbox, {RadioBox, RadioBoxGroup} from 'ship-components-checkbox';
 
 export default class Form extends React.Component {
   constructor(props) {
@@ -112,7 +113,7 @@ Below are is a sample of how to setup the loaders:
 ## License
 The MIT License (MIT)
 
-Copyright (c) 2015 Isaac Suttell
+Copyright (c) 2016 SHIP
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
