@@ -110,6 +110,11 @@ Below are is a sample of how to setup the loaders:
 1. `npm install`
 2. `npm test`
 
+
+## History
+* 0.1.3 - Minor css update on icon height
+* 0.1.0 - Initial
+
 ## License
 The MIT License (MIT)
 
