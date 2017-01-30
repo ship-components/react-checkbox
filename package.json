@@ -1,6 +1,6 @@
 {
   "name": "ship-components-checkbox",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "React checkbox component",
   "main": "src/index.js",
   "scripts": {
@@ -22,6 +22,16 @@
     "url": "https://github.com/ship-components/ship-components-checkbox/issues"
   },
   "homepage": "https://github.com/ship-components/ship-components-checkbox#readme",
+  "contributors": [
+    {
+      "name": "Isaac Suttell",
+      "email": "isaac_suttell@playstation.sony.com"
+    },
+    {
+      "name": "Sepand Assadi",
+      "email": "sepand_assadi@playstation.sony.com"
+    }
+  ],
   "devDependencies": {
     "autoprefixer": "^6.1.1",
     "babel-core": "^6.14.0",
