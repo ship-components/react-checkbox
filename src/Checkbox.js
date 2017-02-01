@@ -136,7 +136,6 @@ export default class CheckBox extends React.Component {
           readOnly={this.props.readOnly}
           type={this.props.type}
           checked={this.state.selected}
-          defaultValue={this.props.value}
           value={this.props.value || this.state.selected}
           ref='input'
         />

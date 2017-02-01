@@ -112,6 +112,7 @@ Below are is a sample of how to setup the loaders:
 
 
 ## History
+* 0.1.4 - Removes the defaultValue prop from <input/> to fix the React 15.2+ warnings
 * 0.1.3 - Minor css update on icon height
 * 0.1.0 - Initial
 
