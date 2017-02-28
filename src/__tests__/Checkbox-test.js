@@ -1,31 +1,37 @@
 jest.dontMock('../Checkbox');
-jest.setMock('ship-components-highlight-click', 'div');
 jest.mock('../check-box.css');
+
+jest.setMock('ship-components-highlight-click', 'div');
+jest.setMock('react-addons-css-transition-group', 'div');
+
 
 import React from 'react';
 // import ReactDOM from 'react-dom';
 import TestUtils from 'react-addons-test-utils';
-import Checkbox from '../Checkbox';
 
 describe('Checkbox', function() {
+  let Checkbox;
+
+  beforeEach(() => {
+    Checkbox = require('../Checkbox').default;
+  });
   it('should assign a custom css class', function() {
 
     let className = 'testClass';
     let reactTree = TestUtils.renderIntoDocument(
-      <Checkbox.default
+      <Checkbox
         className={className}
       />
     );
 
     let comp = TestUtils.findRenderedDOMComponentWithClass(reactTree, className);
-
     expect(comp).toBeDefined();
   });
 
   it('should toggle its state when clicked', function(){
     let className = 'testClass';
     let reactTree = TestUtils.renderIntoDocument(
-      <Checkbox.default
+      <Checkbox
         className={className}
         defaultValue={false}
       />
@@ -44,7 +50,7 @@ describe('Checkbox', function() {
     let fn = jest.genMockFunction();
     let className = 'testClass';
     let reactTree = TestUtils.renderIntoDocument(
-      <Checkbox.default
+      <Checkbox
         onChange={fn}
         className={className}
         defaultValue={false}
