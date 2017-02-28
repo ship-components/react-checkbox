@@ -6,7 +6,9 @@
   "scripts": {
     "start": "grunt server",
     "test": "jest src/ --coverage",
-    "build": "grunt build"
+    "lint": "./node_modules/eslint/bin/eslint.js src/*.jsx",
+    "test": "grunt lint && ./node_modules/jest-cli/bin/jest.js --coverage",
+    "coverage": "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js -v"
   },
   "repository": {
     "type": "git",
