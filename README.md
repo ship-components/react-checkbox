@@ -3,7 +3,7 @@
 
 [![npm](https://img.shields.io/npm/v/ship-components-checkbox.svg?maxAge=2592000)](https://www.npmjs.com/package/ship-components-checkbox)
 [![Build Status](http://img.shields.io/travis/ship-components/ship-components-checkbox/master.svg?style=flat)](https://travis-ci.org/ship-components/ship-components-checkbox)
-[![Coverage Status](https://coveralls.io/repos/github/ship-components/ship-components-checkbox/badge.svg?branch=master)](https://coveralls.io/github/ship-components/ship-components-checkbox?branch=master)
+[![Coverage](http://img.shields.io/coveralls/ship-components/ship-components-checkbox.svg?style=flat)](https://coveralls.io/github/ship-components/ship-components-checkbox?branch=master)
 [![devDependencies](https://img.shields.io/david/dev/ship-components/ship-components-checkbox.svg?style=flat)](https://david-dm.org/ship-components/ship-components-checkbox?type=dev)
 
 
