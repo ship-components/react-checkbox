@@ -20,6 +20,7 @@ span.check-box--icon {
 
 .check-box--input,
 .check-box--icon-background {
+  height: 32px;
   width: 32px;
   text-align: center;
   position: relative;

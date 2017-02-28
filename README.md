@@ -3,6 +3,7 @@
 
 [![npm](https://img.shields.io/npm/v/ship-components-checkbox.svg?maxAge=2592000)](https://www.npmjs.com/package/ship-components-checkbox)
 [![Build Status](http://img.shields.io/travis/ship-components/ship-components-checkbox/master.svg?style=flat)](https://travis-ci.org/ship-components/ship-components-checkbox)
+[![Coverage](http://img.shields.io/coveralls/ship-components/ship-components-checkbox.svg?style=flat)](https://coveralls.io/github/ship-components/ship-components-checkbox?branch=master)
 [![devDependencies](https://img.shields.io/david/dev/ship-components/ship-components-checkbox.svg?style=flat)](https://david-dm.org/ship-components/ship-components-checkbox?type=dev)
 
 
@@ -112,6 +113,7 @@ Below are is a sample of how to setup the loaders:
 
 
 ## History
+* 0.1.5 - Fixes the tests, adds coveralls and Travis CI
 * 0.1.4 - Removes the defaultValue prop from <input/> to fix the React 15.2+ warnings
 * 0.1.3 - Minor css update on icon height
 * 0.1.0 - Initial

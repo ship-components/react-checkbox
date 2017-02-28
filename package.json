@@ -1,12 +1,14 @@
 {
   "name": "ship-components-checkbox",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "React checkbox component",
   "main": "src/index.js",
   "scripts": {
     "start": "grunt server",
     "test": "jest src/ --coverage",
-    "build": "grunt build"
+    "lint": "./node_modules/eslint/bin/eslint.js src/*.jsx",
+    "test": "grunt lint && ./node_modules/jest-cli/bin/jest.js --coverage",
+    "coverage": "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js -v"
   },
   "repository": {
     "type": "git",
@@ -53,7 +55,9 @@
     "grunt-cli": "^0.1.13",
     "grunt-eslint": "^17.1.0",
     "grunt-webpack": "^1.0.11",
-    "jest-cli": "^15.1.1",
+    "jest": "^19.0.2",
+    "jest-cli": "^19.0.2",
+    "jest-css-modules": "^1.1.0",
     "jit-grunt": "^0.9.1",
     "package-banner": "^0.1.0",
     "postcss-calc": "^5.0.0",
@@ -62,30 +66,38 @@
     "postcss-loader": "^0.8.0",
     "postcss-nested": "^1.0.0",
     "postcss-simple-vars": "^1.1.0",
-    "react": "^0.14.3",
-    "react-addons-css-transition-group": "^0.14.3",
-    "react-addons-test-utils": "^0.14.3",
-    "react-dom": "^0.14.3",
+    "react": ">=15.0.0",
+    "react-addons-css-transition-group": ">=15.0.0",
+    "react-addons-test-utils": ">=15.0.0",
+    "react-dom": ">=15.0.0",
     "ship-components-highlight-click": "^0.1.4",
     "style-loader": "^0.13.0",
     "webpack": "^1.12.1",
     "webpack-dev-server": "^1.10.1"
   },
   "jest": {
-    "automock": true,
-    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(es6|jsx|js|json)$",
+    "transform": {
+      "^.+\\.jsx?$": "babel-jest"
+    },
+    "moduleNameMapper": {
+      "\\.(css)$": "<rootDir>/node_modules/jest-css-modules"
+    },
     "unmockedModulePathPatterns": [
       "<rootDir>/node_modules/classnames",
       "<rootDir>/node_modules/react",
       "<rootDir>/node_modules/fbjs",
       "<rootDir>/node_modules/react-dom",
-      "<rootDir>/node_modules/react-addons-test-utils"
+      "<rootDir>/node_modules/react-addons-test-utils",
+      "<rootDir>/node_modules/react-addons-css-transition-group"
     ],
-    "babelJest": {
-      "include": [
-        "src/**/*.@(js|jsx|es6)",
-        "node_modules/ship-components-highlight-click/src/**/*.@(js|jsx|es6)"
-      ]
-    }
+    "transformIgnorePatterns": [
+      "node_modules/(?!ship-components-highlight-click)"
+    ]
+  },
+  "babelJest": {
+    "include": [
+      "src/**/*.@(js|jsx|es6)",
+      "node_modules/ship-components-highlight-click/src/**/*.@(js|jsx|es6)"
+    ]
   }
 }
