@@ -1,13 +1,12 @@
 {
   "name": "ship-components-checkbox",
-  "version": "0.1.5",
+  "version": "0.2.0",
   "description": "React checkbox component",
   "main": "src/index.js",
   "scripts": {
     "start": "grunt server",
-    "test": "jest src/ --coverage",
-    "lint": "./node_modules/eslint/bin/eslint.js src/*.jsx",
     "test": "grunt lint && ./node_modules/jest-cli/bin/jest.js --coverage",
+    "lint": "./node_modules/eslint/bin/eslint.js src/*.jsx",
     "coverage": "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js -v"
   },
   "repository": {
@@ -41,10 +40,12 @@
     "babel-jest": "^15.0.0",
     "babel-loader": "^6.2.0",
     "babel-polyfill": "^6.13.0",
-    "babel-preset-es2015": "^6.14.0",
+    "babel-preset-env": "^1.4.0",
+    "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.11.1",
     "codacy-coverage": "^1.1.3",
     "codeclimate-test-reporter": "^0.1.1",
+    "coveralls": "^2.13.0",
     "css-loader": "^0.23.0",
     "eslint": "^1.2.1",
     "eslint-loader": "^1.0.0",
