@@ -7,7 +7,7 @@ jest.setMock('react-addons-css-transition-group', 'div');
 
 import React from 'react';
 // import ReactDOM from 'react-dom';
-import TestUtils from 'react-addons-test-utils';
+import TestUtils from 'react-dom/test-utils';
 
 describe('Checkbox', function() {
   let Checkbox;
