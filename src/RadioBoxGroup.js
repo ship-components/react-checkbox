@@ -7,6 +7,7 @@
 
 // Modules
 import React from 'react';
+import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import RadioBox from './RadioBox';
 
@@ -82,10 +83,10 @@ export default class RadioBoxGroup extends React.Component {
  * @static
  */
 RadioBoxGroup.propTypes = {
-  className: React.PropTypes.string,
-  defaultValue: React.PropTypes.string,
-  readOnly: React.PropTypes.bool,
-  onChange: React.PropTypes.func
+  className: PropTypes.string,
+  defaultValue: PropTypes.string,
+  readOnly: PropTypes.bool,
+  onChange: PropTypes.func
 };
 
 /**

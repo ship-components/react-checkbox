@@ -113,6 +113,7 @@ Below are is a sample of how to setup the loaders:
 
 
 ## History
+* 1.0.0 - Update to use prop-types (for React 16 compatibility)
 * 0.2.0 - Updates to the latest babel configurations (babel-preset-env)
 * 0.1.5 - Fixes the tests, adds coveralls and Travis CI
 * 0.1.4 - Removes the defaultValue prop from <input/> to fix the React 15.2+ warnings

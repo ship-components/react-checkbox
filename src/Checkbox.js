@@ -7,6 +7,7 @@
 
 // Modules
 import React from 'react';
+import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import HighlightClick from 'ship-components-highlight-click';
@@ -150,14 +151,14 @@ export default class CheckBox extends React.Component {
  * @static
  */
 CheckBox.propTypes = {
-  defaultValue: React.PropTypes.bool,
-  readOnly: React.PropTypes.bool,
-  selected: React.PropTypes.bool,
-  value: React.PropTypes.string,
-  label: React.PropTypes.string,
-  onChange: React.PropTypes.func,
-  outlineIcon: React.PropTypes.element,
-  selectedIcon: React.PropTypes.element
+  defaultValue: PropTypes.bool,
+  readOnly: PropTypes.bool,
+  selected: PropTypes.bool,
+  value: PropTypes.string,
+  label: PropTypes.string,
+  onChange: PropTypes.func,
+  outlineIcon: PropTypes.element,
+  selectedIcon: PropTypes.element
 }
 
 /**

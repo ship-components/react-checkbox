@@ -1,10 +1,11 @@
 {
   "name": "ship-components-checkbox",
-  "version": "0.2.0",
+  "version": "1.0.0",
   "description": "React checkbox component",
   "main": "src/index.js",
   "scripts": {
     "start": "grunt server",
+    "build": "npm run test && grunt build",
     "test": "grunt lint && ./node_modules/jest-cli/bin/jest.js --coverage",
     "lint": "./node_modules/eslint/bin/eslint.js src/*.jsx",
     "coverage": "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js -v"
@@ -67,10 +68,11 @@
     "postcss-loader": "^0.8.0",
     "postcss-nested": "^1.0.0",
     "postcss-simple-vars": "^1.1.0",
-    "react": ">=15.0.0",
-    "react-addons-css-transition-group": ">=15.0.0",
-    "react-addons-test-utils": ">=15.0.0",
-    "react-dom": ">=15.0.0",
+    "prop-types": "^15.6.1",
+    "raf": "^3.4.0",
+    "react": "^15.6.2",
+    "react-addons-css-transition-group": "^15.6.2",
+    "react-dom": "^15.6.2",
     "ship-components-highlight-click": "^0.1.4",
     "style-loader": "^0.13.0",
     "webpack": "^1.12.1",
@@ -88,11 +90,13 @@
       "<rootDir>/node_modules/react",
       "<rootDir>/node_modules/fbjs",
       "<rootDir>/node_modules/react-dom",
-      "<rootDir>/node_modules/react-addons-test-utils",
       "<rootDir>/node_modules/react-addons-css-transition-group"
     ],
     "transformIgnorePatterns": [
       "node_modules/(?!ship-components-highlight-click)"
+    ],
+    "setupFiles": [
+      "raf/polyfill"
     ]
   },
   "babelJest": {
