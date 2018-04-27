@@ -69,9 +69,6 @@ module.exports = function(grunt) {
       failOnWarning: false
     },
     externals: {
-      'react': 'React',
-      'react-dom': 'ReactDOM',
-      'react-addons-css-transition-group': 'React.addons.CSSTransitionGroup'
     }
   });
 

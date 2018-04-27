@@ -9,7 +9,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import { CSSTransitionGroup } from 'react-transition-group';
 import HighlightClick from 'ship-components-highlight-click';
 
 import classes from './check-box.css';
@@ -119,15 +119,15 @@ export default class CheckBox extends React.Component {
           className={classes.input}
         >
           <span className={classes['icon-background'] + ' ' + this.props.outlineIconClass + ' ' + classes.icon} />
-          <ReactCSSTransitionGroup
+          <CSSTransitionGroup
             transitionName={classes}
             transitionEnterTimeout={500}
             transitionLeaveTimeout={500} >
               {selected === true ?
                 <span className={classes.icon + ' ' + this.props.selectedIconClass} /> :
-                null
+                <span/>
               }
-          </ReactCSSTransitionGroup>
+          </CSSTransitionGroup>
         </div>
         <label className={classes.label}>
           {this.props.label || this.props.children}
