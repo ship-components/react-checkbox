@@ -2,7 +2,7 @@ jest.dontMock('../Checkbox');
 jest.mock('../check-box.css');
 
 jest.setMock('ship-components-highlight-click', 'div');
-jest.setMock('react-addons-css-transition-group', 'div');
+jest.mock('react-transition-group', () => ({ CSSTransitionGroup: () => <div /> }));
 
 
 import React from 'react';
