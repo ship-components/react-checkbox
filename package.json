@@ -1,6 +1,6 @@
 {
   "name": "ship-components-checkbox",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "React checkbox component",
   "main": "src/index.js",
   "scripts": {
@@ -63,7 +63,7 @@
     "jest-css-modules": "^1.1.0",
     "jit-grunt": "^0.9.1",
     "package-banner": "^0.1.0",
-    "postcss-calc": "^5.0.0",
+    "postcss-calc": "^6.0.0",
     "postcss-color-function": "^2.0.0",
     "postcss-color-hex-alpha": "^2.0.0",
     "postcss-loader": "^0.8.0",
